@@ -1,0 +1,86 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 90vh;
+	background-color: hsl(210, 60%, 15%);
+}
+
+#snowball {
+	clip-path: circle(50%);
+	width: 200px;
+	height: 200px;
+}
+
+.snowflake-area {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	position: relative;
+	background: radial-gradient(
+		circle,
+		rgba(255, 255, 255, 0.05) 60%,
+		rgba(255, 255, 255, 0.2) 80%
+	);
+}
+
+/* Highlights */
+.snowflake-area::before {
+	content: "";
+	filter: blur(1px);
+	position: absolute;
+	width: 50%;
+	height: 30%;
+	top: 2%;
+	left: 25%;
+	border-radius: 50%;
+	background-image: linear-gradient(
+		to bottom,
+		rgba(255, 255, 255, 0.15),
+		rgba(255, 255, 255, 0)
+	);
+}
+
+/* Reflections */
+.snowflake-area::after {
+	content: "";
+	border-radius: 30%;
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	z-index: -1;
+	bottom: -100px;
+	left: 0px;
+	transform: perspective(150px) rotatex(80deg);
+	filter: blur(20px);
+	background: radial-gradient(
+		circle,
+		rgba(255, 255, 255, 0.3) 10%,
+		hsla(210, 60%, 30%, 0.8) 25%,
+		rgba(255, 255, 255, 0.8) 40%
+	);
+}
+
+button {
+	margin-top: 100px;
+	background-color: hsla(210, 60%, 100%, 0);
+	border: 1px solid hsla(210, 60%, 100%, 0.3);
+	color: hsla(210, 60%, 100%, 0.5);
+	padding: 8px 16px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+	font-size: 0.6em;
+	text-transform: uppercase;
+	font-weight: bold;
+	border-radius: 5px;
+	transition: 1s;
+}
+
+button:hover {
+	border: 1px solid hsla(210, 60%, 100%, 0.6);
+		color: hsla(210, 60%, 100%, 0.8);
+}
